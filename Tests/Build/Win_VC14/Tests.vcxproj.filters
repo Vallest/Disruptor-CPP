@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{dc305e2f-2883-466a-b3e0-76777ef8c660}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Disruptor">
+      <UniqueIdentifier>{4d114b2f-fcc8-4635-8ab6-7285d75e9847}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Disruptor\Include">
+      <UniqueIdentifier>{45292b5b-9cc0-4d2b-ae26-755f6e782dfe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\UnitTesting.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\BlockingWaitStrategy.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\BusySpinWaitStrategy.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\CacheAlignedArray.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\ConsumerBarrier.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\Defines.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\Error.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\Memory.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\MultiThreadedSequencer.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\ProducerBarrier.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\RingBuffer.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\Sequence.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\SequenceGroup.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\Sequencer.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\SingleThreadedSequencer.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\SleepingWaitStrategy.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\TimeoutWaitStrategy.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\Utility.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\WaitStrategy.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Disruptor\YieldingWaitStrategy.h">
+      <Filter>Disruptor\Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\UnitTesting.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Tests.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
