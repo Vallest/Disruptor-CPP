@@ -85,7 +85,7 @@ void consumerRoutine(disruptor::RingBuffer<int>& rb, disruptor::ConsumerBarrier&
 
 int main()
 {
-    const size_t bufferSize = 65536;
+    const size_t bufferSize = 16384;
 
     disruptor::RingBuffer<int> rb(bufferSize);
 
