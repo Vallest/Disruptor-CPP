@@ -31,7 +31,7 @@ namespace disruptor {
 		~SequenceGroup()
 		{
 			if (buffer_) {
-				deallocate(buffer_);
+				vallest::disruptor::deallocate(buffer_);
 			}
 		}
 
@@ -56,13 +56,13 @@ namespace disruptor {
 		{
 			if (std::find(buffer_, buffer_ + size_, sequence) == buffer_ + size_)
 			{
-				SequencePtr* buffer = (SequencePtr*)allocate(sizeof(SequencePtr) * (size_ + 1), alignof(SequencePtr));
+				SequencePtr* buffer = (SequencePtr*)vallest::disruptor::allocate(sizeof(SequencePtr) * (size_ + 1), alignof(SequencePtr));
 
 				if (buffer_)
 				{
 					memcpy(buffer, buffer_, sizeof(SequencePtr) * size_);
 
-					deallocate(buffer_);
+					vallest::disruptor::deallocate(buffer_);
 				}
 
 				buffer_ = buffer;

@@ -30,7 +30,7 @@ namespace disruptor {
 
 	public:
 		explicit MultiThreadedSequencer(size_t bufferSize) :
-			bufferSize_(bufferSize), indexMask_(bufferSize - 1), indexShift_(countTailingZeros(bufferSize)),
+			bufferSize_(bufferSize), indexMask_(bufferSize - 1), indexShift_(vallest::disruptor::countTailingZeros(bufferSize)),
 			sequence_(Sequence::create()), availableBuffer_(bufferSize, -1),
 			cachedGatingSequence_(Sequence::create())
 		{

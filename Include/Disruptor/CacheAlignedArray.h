@@ -23,16 +23,16 @@ namespace disruptor {
 	public:
 		explicit CacheAlignedArray(size_t size)
 		{
-			data_ = (T*)allocate(sizeof(T) * size, DISRUPTOR_CACHE_LINE_SIZE);
+			data_ = (T*)vallest::disruptor::allocate(sizeof(T) * size, DISRUPTOR_CACHE_LINE_SIZE);
 			size_ = size;
 
 			DISRUPTOR_TRY
 			{
-				construct(data_, size_);
+				vallest::disruptor::construct(data_, size_);
 			}
 			DISRUPTOR_CATCH_ALL
 			{
-				deallocate(data_);
+				vallest::disruptor::deallocate(data_);
 				DISRUPTOR_RETHROW
 			}
 		}
@@ -40,16 +40,16 @@ namespace disruptor {
 		template<typename U>
 		explicit CacheAlignedArray(size_t size, const U& initValue)
 		{
-			data_ = (T*)allocate(sizeof(T) * size, DISRUPTOR_CACHE_LINE_SIZE);
+			data_ = (T*)vallest::disruptor::allocate(sizeof(T) * size, DISRUPTOR_CACHE_LINE_SIZE);
 			size_ = size;
 
 			DISRUPTOR_TRY
 			{
-				construct(data_, size_, initValue);
+				vallest::disruptor::construct(data_, size_, initValue);
 			}
 			DISRUPTOR_CATCH_ALL
 			{
-				deallocate(data_);
+				vallest::disruptor::deallocate(data_);
 				DISRUPTOR_RETHROW
 			}
 		}
@@ -120,9 +120,9 @@ namespace disruptor {
 
 		~CacheAlignedArray()
 		{
-			destroy(data_, size_);
+			vallest::disruptor::destroy(data_, size_);
 
-			deallocate(data_);
+			vallest::disruptor::deallocate(data_);
 		}
 
 	private:

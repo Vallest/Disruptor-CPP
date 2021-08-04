@@ -16,8 +16,8 @@
 
 		#include <malloc.h>
 
-		#define DISRUPTOR_ALLOC(Size, Align) _aligned_malloc(Size, Align)
-		#define DISRUPTOR_FREE(Ptr) _aligned_free(Ptr)
+		#define DISRUPTOR_ALLOC _aligned_malloc
+		#define DISRUPTOR_FREE _aligned_free
 
 	#elif defined(__APPLE__) || defined(__linux__)
 
@@ -39,8 +39,8 @@
 			free(ptr);
 		}
 
-		#define DISRUPTOR_ALLOC(Size, Align) vallest_disruptor_aligned_malloc(Size, Align)
-		#define DISRUPTOR_FREE(Ptr) vallest_disruptor_aligned_free(Ptr)
+		#define DISRUPTOR_ALLOC vallest_disruptor_aligned_malloc
+		#define DISRUPTOR_FREE vallest_disruptor_aligned_free
 
 	#else
 
@@ -69,8 +69,8 @@
 			free(*((void**)ptr - 1));
 		}
 
-		#define DISRUPTOR_ALLOC(Size, Align) vallest_disruptor_aligned_malloc(Size, Align)
-		#define DISRUPTOR_FREE(Ptr) vallest_disruptor_aligned_free(Ptr)
+		#define DISRUPTOR_ALLOC vallest_disruptor_aligned_malloc
+		#define DISRUPTOR_FREE vallest_disruptor_aligned_free
 
 	#endif
 
@@ -108,7 +108,7 @@ namespace disruptor {
 	inline void destroy(T* ptr, size_t n)
 	{
 		while (n > 0) {
-			destroy(ptr + --n);
+			vallest::disruptor::destroy(ptr + --n);
 		}
 	}
 
@@ -125,7 +125,7 @@ namespace disruptor {
 		}
 		DISRUPTOR_CATCH_ALL
 		{
-			destroy(ptr, p - ptr);
+			vallest::disruptor::destroy(ptr, p - ptr);
 			DISRUPTOR_RETHROW
 		}
 	}
@@ -143,7 +143,7 @@ namespace disruptor {
 		}
 		DISRUPTOR_CATCH_ALL
 		{
-			destroy(ptr, p - ptr);
+			vallest::disruptor::destroy(ptr, p - ptr);
 			DISRUPTOR_RETHROW
 		}
 	}
