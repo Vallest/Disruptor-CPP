@@ -54,6 +54,13 @@ namespace disruptor {
 			}
 		}
 
+		~CacheAlignedArray()
+		{
+			vallest::disruptor::destroy(data_, size_);
+
+			vallest::disruptor::deallocate(data_);
+		}
+
 		bool empty() const
 		{
 			return size_ == 0;
@@ -116,13 +123,6 @@ namespace disruptor {
 		{
 			assert(index < size_);
 			return data_[index];
-		}
-
-		~CacheAlignedArray()
-		{
-			vallest::disruptor::destroy(data_, size_);
-
-			vallest::disruptor::deallocate(data_);
 		}
 
 	private:
