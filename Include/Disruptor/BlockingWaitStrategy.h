@@ -22,28 +22,8 @@ namespace disruptor {
 		DISRUPTOR_CLASS_OVERLOAD_NEW(alignof(BlockingWaitStrategy))
 		DISRUPTOR_CLASS_DISALLOW_COPY_AND_ASSIGN(BlockingWaitStrategy)
 
-	private:
-		class WaitGuard {
-		DISRUPTOR_CLASS:
-			DISRUPTOR_CLASS_DISALLOW_COPY_AND_ASSIGN(WaitGuard)
-
-		public:
-			WaitGuard(size_t& waitCount) : waitCount_(waitCount)
-			{
-				++waitCount_;
-			}
-
-			~WaitGuard()
-			{
-				--waitCount_;
-			}
-
-		private:
-			size_t& waitCount_;
-		};
-
 	public:
-		BlockingWaitStrategy() : waitingCount_(0)
+		BlockingWaitStrategy()
 		{
 		}
 
@@ -57,8 +37,6 @@ namespace disruptor {
 
 				while ((availableSequence = sequencer.getHighestPublishedSequence(sequence)) < sequence)
 				{
-					WaitGuard g(waitingCount_);
-
 					cv_.wait(lock);
 				}
 			}
@@ -78,17 +56,13 @@ namespace disruptor {
 		{
 			std::unique_lock<std::mutex> lock(m_);
 
-			if (waitingCount_ > 0) {
-				cv_.notify_all();
-			}
+			cv_.notify_all();
 		}
 
 	private:
 		std::mutex m_;
 
 		std::condition_variable cv_;
-
-		size_t waitingCount_;
 	};
 
 } // disruptor
