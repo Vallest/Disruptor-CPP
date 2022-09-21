@@ -74,6 +74,11 @@ namespace disruptor {
 			sequence_->set(highSequence);
 		}
 
+		virtual seq_t getHighestSequence() const override
+		{
+			return sequence_->get();
+		}
+
 		virtual seq_t getHighestPublishedSequence(seq_t sequence) const override
 		{
 			seq_t upperBound = sequence_->get();
@@ -84,6 +89,11 @@ namespace disruptor {
 			}
 
 			return upperBound;
+		}
+
+		virtual seq_t getMinimumGatingSequence() const override
+		{
+			return gatingSequences_.getMinimumSequence();
 		}
 
 		virtual void addGatingSequence(const Sequence* sequence) override

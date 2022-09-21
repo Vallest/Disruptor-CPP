@@ -22,7 +22,11 @@ namespace disruptor {
 
 		virtual void publish(seq_t lowSequence, seq_t highSequence) = 0;
 
+		virtual seq_t getHighestSequence() const = 0;
+
 		virtual seq_t getHighestPublishedSequence(seq_t sequence) const = 0;
+
+		virtual seq_t getMinimumGatingSequence() const = 0;
 
 		virtual void addGatingSequence(const class Sequence* sequence) = 0;
 	};
